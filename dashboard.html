@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="explore.html" class="nav-link">Explore Students</a>
+        <a href="connections.html" class="nav-link">My Connections</a>
+        <a href="profile.html" class="nav-link">My Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="user-nav-dropdown" title="View Profile">
+          <div class="nav-avatar-mini" id="dashNavAvatar">AM</div>
+          <span class="nav-user-name" id="dashNavName">Alex Morgan</span>
+        </a>
+        <a href="index.html" class="btn btn-outline btn-sm" title="Log out to Home">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-bottom: 4rem;">
+    <!-- Dashboard User Header Banner -->
+    <section class="dashboard-header-banner">
+      <div class="container">
+        <div class="dash-user-row">
+          <div class="dash-user-intro">
+            <div class="dash-avatar-large" id="dashAvatar">AM</div>
+            <div class="dash-user-details">
+              <h1>Welcome back, <span id="dashUserName">Alex Morgan</span>! 👋</h1>
+              <div class="dash-user-meta">
+                <span id="dashUserMeta"><i class="fa-solid fa-graduation-cap"></i> Computer Science & Eng. • 3rd Year</span>
+                <span>• Roll No: CS23B1042</span>
+                <span class="badge badge-status-active" style="font-size: 0.78rem;">
+                  <i class="fa-solid fa-star"></i> 4.9 Rating (12 Swaps)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-actions-group">
+            <a href="profile.html" class="btn btn-secondary btn-sm">
+              <i class="fa-solid fa-pen-to-square"></i> Manage Skills
+            </a>
+            <a href="explore.html" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-magnifying-glass"></i> Find Skill Partner
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Content -->
+    <div class="container" style="margin-top: 2.5rem;">
+      <!-- Summary Metrics Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-wrap stat-blue">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statActiveSwaps">3</div>
+            <div class="stat-title">Active Connections</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrap stat-purple">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statSkillsOffered">4</div>
+            <div class="stat-title">Skills I Can Teach</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrap stat-green">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statSkillsLearning">3</div>
+            <div class="stat-title">Skills I Want to Learn</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrap stat-amber">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statPendingRequests">2</div>
+            <div class="stat-title">Pending Requests</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-Column Layout -->
+      <div class="dashboard-layout">
+        <!-- Left Column: Quick Search & Suggested Matches -->
+        <div>
+          <!-- Quick Search Box -->
+          <div class="dash-card" style="padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+            <form id="dashQuickSearchForm" style="display: flex; gap: 0.75rem; align-items: center;">
+              <div style="flex: 1; position: relative;">
+                <input type="text" id="dashQuickSearchInput" class="form-control" placeholder="Search by skill (e.g. Figma, C++, Python, AWS)..." style="padding-left: 2.5rem;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.75rem 1.25rem;">
+                Search
+              </button>
+            </form>
+          </div>
+
+          <!-- Suggested Matches Section -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div>
+                <h3 class="dash-card-title">
+                  <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary-purple);"></i>
+                  Recommended Peer Matches
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                  Peers whose teaching strengths match what you want to learn.
+                </p>
+              </div>
+              <a href="explore.html" class="btn btn-outline btn-sm">
+                View All <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div id="suggestedMatchesContainer">
+              <!-- Rendered dynamically by js/dashboard.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Upcoming Sessions & Activity Feed -->
+        <div>
+          <!-- Upcoming Sessions -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">
+                <i class="fa-regular fa-calendar-check" style="color: var(--primary-blue);"></i>
+                Upcoming Sessions
+              </h3>
+              <a href="connections.html" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.7rem; font-size: 0.8rem;">
+                Schedule
+              </a>
+            </div>
+
+            <!-- Session 1 -->
+            <div class="session-item">
+              <div>
+                <div class="session-time">
+                  <i class="fa-regular fa-clock"></i> Tomorrow, 5:30 PM
+                </div>
+                <div class="session-title">Figma Auto-Layout & UI Components</div>
+                <div class="session-partner">
+                  With <strong>Sneha Patel</strong> • Central Library (Study Room B)
+                </div>
+              </div>
+              <a href="connections.html" class="btn btn-outline btn-sm" title="Session details">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <!-- Session 2 -->
+            <div class="session-item">
+              <div>
+                <div class="session-time">
+                  <i class="fa-regular fa-clock"></i> Friday, 4:00 PM
+                </div>
+                <div class="session-title">Binary Search & Graph Traversals</div>
+                <div class="session-partner">
+                  With <strong>Ananya Iyer</strong> • Google Meet (Online)
+                </div>
+              </div>
+              <a href="connections.html" class="btn btn-outline btn-sm" title="Session details">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <!-- Session 3 -->
+            <div class="session-item">
+              <div>
+                <div class="session-time">
+                  <i class="fa-regular fa-clock"></i> Sunday, 11:00 AM
+                </div>
+                <div class="session-title">AWS EC2 & S3 Cloud Deployment</div>
+                <div class="session-partner">
+                  With <strong>Vikramaditya Singh</strong> • CS Department Lab
+                </div>
+              </div>
+              <a href="connections.html" class="btn btn-outline btn-sm" title="Session details">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Recent Notifications / Activity -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">
+                <i class="fa-solid fa-bell" style="color: #f59e0b;"></i>
+                Recent Swap Activity
+              </h3>
+            </div>
+
+            <ul style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.88rem;">
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-purple-subtle); color: var(--primary-purple); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem;">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div>
+                  <div><strong>Rohan Verma</strong> sent a swap request to learn JavaScript & DOM.</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">2 hours ago • <a href="connections.html" style="color: var(--primary-purple); font-weight: 600;">Review Request</a></div>
+                </div>
+              </li>
+
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--success-bg); color: var(--success); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem;">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                  <div><strong>Sneha Patel</strong> left a 5.0 ★ review for your Python mentoring!</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Yesterday 6:45 PM</div>
+                </div>
+              </li>
+
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-blue-subtle); color: var(--primary-blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem;">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                  <div>You completed a 1-hour swap session with <strong>Ananya Iyer</strong>.</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">3 days ago</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- PBL Project Info Card -->
+          <div style="background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%); border: 1px dashed var(--primary-purple-border); border-radius: var(--radius-lg); padding: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--primary-purple); font-size: 0.95rem; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-circle-info"></i> PBL Evaluation Notice
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+              This dashboard visualizes student metrics, complementary match recommendations, and session logs in a pure responsive HTML/CSS/JavaScript interface.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="explore.html" style="color: #a5b4fc;">Explore Directory</a>
+          <a href="connections.html" style="color: #a5b4fc;">My Connections</a>
+          <a href="profile.html" style="color: #a5b4fc;">My Profile</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

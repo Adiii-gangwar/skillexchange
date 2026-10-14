@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build SkillSwap C++ Backend",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "build.bat"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Compiles SkillSwap C++ HTTP Server with SQLite using MinGW GCC"
+    },
+    {
+      "label": "Run SkillSwap Server",
+      "type": "shell",
+      "command": ".\\server.exe",
+      "group": "none",
+      "dependsOn": "Build SkillSwap C++ Backend",
+      "problemMatcher": [],
+      "detail": "Starts the compiled C++ backend on http://127.0.0.1:8080"
+    }
+  ]
+}

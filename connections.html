@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Connections & Swaps – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="explore.html" class="nav-link">Explore Students</a>
+        <a href="connections.html" class="nav-link active">My Connections</a>
+        <a href="profile.html" class="nav-link">My Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="user-nav-dropdown" title="Profile">
+          <div class="nav-avatar-mini">AM</div>
+          <span class="nav-user-name">Alex Morgan</span>
+        </a>
+        <a href="index.html" class="btn btn-outline btn-sm" title="Log out to Home">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div style="margin-bottom: 2rem;">
+        <span class="section-subtitle">Collaborations</span>
+        <h1 style="font-size: clamp(1.8rem, 3vw, 2.25rem); margin-bottom: 0.5rem;">
+          My Skill Connections & Swap Requests
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1rem;">
+          Manage ongoing mentorship sessions, respond to incoming swap requests, and track scheduled meetings.
+        </p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="connections-tabs-nav">
+        <button type="button" class="conn-tab-btn active" data-target="tabActiveConnections">
+          <i class="fa-solid fa-handshake"></i> Active Connections
+          <span class="tab-badge" id="activeCount">3</span>
+        </button>
+
+        <button type="button" class="conn-tab-btn" data-target="tabPendingRequests">
+          <i class="fa-solid fa-inbox"></i> Pending Requests Received
+          <span class="tab-badge" id="pendingCount">2</span>
+        </button>
+
+        <button type="button" class="conn-tab-btn" data-target="tabSentRequests">
+          <i class="fa-regular fa-paper-plane"></i> Sent Invitations
+          <span class="tab-badge" id="sentCount">1</span>
+        </button>
+      </div>
+
+      <!-- Tab 1: Active Connections -->
+      <div id="tabActiveConnections" class="tab-content-panel">
+        <div class="connections-grid" id="activeConnectionsGrid">
+          <!-- Rendered dynamically by js/connections.js -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Pending Received Requests -->
+      <div id="tabPendingRequests" class="tab-content-panel" style="display: none;">
+        <div class="connections-grid" id="pendingRequestsGrid">
+          <!-- Rendered dynamically by js/connections.js -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Sent Requests -->
+      <div id="tabSentRequests" class="tab-content-panel" style="display: none;">
+        <div class="connections-grid" id="sentRequestsGrid">
+          <!-- Rendered dynamically by js/connections.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Demo Chat Modal -->
+  <div class="modal-overlay" id="chatPreviewModal">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--success);"></div>
+            <h3 class="modal-title" id="chatPartnerName">Sneha Patel</h3>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;" id="chatTopicBadge">
+            Learning: Figma & UI/UX
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" style="background: var(--bg-body); padding: 1.25rem;">
+        <div id="chatMessagesBody" style="min-height: 220px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column;">
+          <!-- Dynamically populated sample message exchange -->
+        </div>
+
+        <form id="chatSendForm" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <input type="text" id="chatInputField" class="form-control" placeholder="Type a message to your partner..." required style="background: white;">
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-paper-plane"></i> Send
+          </button>
+        </form>
+      </div>
+
+      <div class="modal-footer" style="padding: 0.75rem 1.25rem; font-size: 0.78rem; color: var(--text-muted); justify-content: space-between;">
+        <span><i class="fa-solid fa-circle-info"></i> Interactive Frontend Chat Demo</span>
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Schedule Session Modal -->
+  <div class="modal-overlay" id="scheduleSessionModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-regular fa-calendar-plus" style="color: var(--primary-blue);"></i>
+          Schedule Swap Session
+        </h3>
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="scheduleSessionForm">
+        <div class="modal-body">
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            Plan a 1-on-1 study slot with <strong id="schedulePartnerName" style="color: var(--text-primary);">Peer</strong>.
+          </p>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="sessionDate">Session Date *</label>
+              <input type="date" id="sessionDate" class="form-control" value="2026-10-18" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="sessionTime">Time Slot *</label>
+              <input type="time" id="sessionTime" class="form-control" value="16:30" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sessionVenue">Study Location / Mode *</label>
+            <select id="sessionVenue" class="form-control form-select" required>
+              <option value="Central Library (Floor 2 Study Hub)">Central Library (Floor 2 Study Hub)</option>
+              <option value="CS Department Lab 3">CS Department Lab 3</option>
+              <option value="Campus Cafeteria Discussion Area">Campus Cafeteria Discussion Area</option>
+              <option value="Online (Google Meet Link)">Online (Google Meet Link)</option>
+              <option value="Online (Discord Voice Room)">Online (Discord Voice Room)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sessionAgenda">Topic Agenda for this Session</label>
+            <input type="text" id="sessionAgenda" class="form-control" placeholder="e.g. 45 min Figma components, then 45 min Python loops">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-calendar-check"></i> Confirm Session
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="dashboard.html" style="color: #a5b4fc;">Dashboard</a>
+          <a href="explore.html" style="color: #a5b4fc;">Explore Directory</a>
+          <a href="profile.html" style="color: #a5b4fc;">My Profile</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/connections.js"></script>
+</body>
+</html>

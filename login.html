@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="explore.html" class="nav-link">Explore Skills</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="register.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-user-plus"></i> Register
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-wrapper">
+    <div class="auth-container">
+      <!-- Sidebar Features -->
+      <div class="auth-sidebar">
+        <div class="auth-sidebar-content">
+          <div class="brand-logo" style="color: white; margin-bottom: 2rem;">
+            <div class="brand-icon" style="background: rgba(255, 255, 255, 0.2); box-shadow: none;">
+              <i class="fa-solid fa-repeat"></i>
+            </div>
+            SkillSwap
+          </div>
+
+          <h2>Welcome Back!</h2>
+          <p>
+            Check your pending swap requests, review scheduled study sessions, and continue exchanging knowledge with fellow students.
+          </p>
+
+          <ul class="auth-feature-list">
+            <li>
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <span>3 active skill swaps in progress</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-bell"></i>
+              <span>2 new swap requests waiting for your response</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-star"></i>
+              <span>Maintained 4.9 ★ campus peer rating</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="font-size: 0.82rem; opacity: 0.85;">
+          <i class="fa-solid fa-graduation-cap"></i> Academic peer collaboration platform.
+        </div>
+      </div>
+
+      <!-- Login Form Side -->
+      <div class="auth-form-side">
+        <div class="auth-header">
+          <h1>Student Sign In</h1>
+          <p>Enter your college email or roll number to access your dashboard.</p>
+        </div>
+
+        <!-- Quick Demo Fill Banner -->
+        <div class="demo-fill-card">
+          <div class="demo-fill-text">
+            <i class="fa-solid fa-bolt"></i> <strong>PBL Presentation Demo:</strong> Click to auto-fill sample credentials.
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="demoFillLogin()">
+            Auto-Fill
+          </button>
+        </div>
+
+        <form id="studentLoginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label for="loginEmail" class="form-label">College Email or Student ID</label>
+            <div style="position: relative;">
+              <input type="text" id="loginEmail" class="form-control" placeholder="student@college.edu" required style="padding-left: 2.5rem;">
+              <i class="fa-regular fa-envelope" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+              <label for="loginPassword" class="form-label" style="margin-bottom: 0;">Password</label>
+              <a href="#" onclick="showToast('Password Reset', 'Password reset instructions sent to student email in demo.', 'info'); return false;" style="font-size: 0.82rem; color: var(--primary-purple); font-weight: 600;">
+                Forgot password?
+              </a>
+            </div>
+            <div style="position: relative;">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required style="padding-left: 2.5rem; padding-right: 2.5rem;">
+              <i class="fa-solid fa-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+              <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer;">
+                <i class="fa-regular fa-eye" id="togglePassIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; font-size: 0.88rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" checked>
+              <span>Remember this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem;">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Dashboard
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account yet? <a href="register.html">Register for free</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div><a href="index.html" style="color: #a5b4fc;">Back to Home</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const pass = document.getElementById('loginPassword');
+      const icon = document.getElementById('togglePassIcon');
+      if (pass.type === 'password') {
+        pass.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        pass.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      const res = await SkillSwapAPI.login(email, password);
+      if (res.ok && res.data.success) {
+        SkillSwapAPI.setToken(res.data.token);
+        SkillSwapAPI.setCurrentUser(res.data.user);
+        showToast('Login Successful!', `Welcome back, ${res.data.user.name || email}! Loading dashboard...`, 'success');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 800);
+      } else {
+        const errMsg = res.data && res.data.error ? res.data.error : 'Invalid login credentials.';
+        showToast('Authentication Error', errMsg, 'error');
+      }
+    }
+  </script>
+</body>
+</html>

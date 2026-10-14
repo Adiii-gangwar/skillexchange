@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="explore.html" class="nav-link">Explore Skills</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span style="font-size: 0.88rem; color: var(--text-secondary); display: none; @media(min-width: 640px){display: inline;}">Already registered?</span>
+        <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-wrapper">
+    <div class="auth-container">
+      <!-- Sidebar Features -->
+      <div class="auth-sidebar">
+        <div class="auth-sidebar-content">
+          <div class="brand-logo" style="color: white; margin-bottom: 2rem;">
+            <div class="brand-icon" style="background: rgba(255, 255, 255, 0.2); box-shadow: none;">
+              <i class="fa-solid fa-repeat"></i>
+            </div>
+            SkillSwap
+          </div>
+
+          <h2>Join Your Campus Peer Network</h2>
+          <p>
+            Connect with students from your college to trade programming languages, design techniques, and academic mentorship.
+          </p>
+
+          <ul class="auth-feature-list">
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>No money required — 100% peer barter</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Exchange skills across different departments</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Boost your resume with verified peer ratings</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Flexible weekend and after-college study slots</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="font-size: 0.82rem; opacity: 0.85;">
+          <i class="fa-solid fa-shield-halved"></i> Only verified college student profiles are approved.
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <div class="auth-form-side">
+        <div class="auth-header">
+          <h1>Create Student Account</h1>
+          <p>Fill out your basic college info and your first skill match.</p>
+        </div>
+
+        <!-- Quick Demo Fill Banner -->
+        <div class="demo-fill-card">
+          <div class="demo-fill-text">
+            <i class="fa-solid fa-bolt"></i> <strong>PBL Presentation Demo:</strong> Pre-fill sample student data.
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="demoFillRegister()">
+            Auto-Fill
+          </button>
+        </div>
+
+        <form id="studentRegistrationForm" onsubmit="handleRegistrationSubmit(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regName" class="form-label">Full Name *</label>
+              <input type="text" id="regName" class="form-control" placeholder="e.g. Alex Morgan" required>
+            </div>
+
+            <div class="form-group">
+              <label for="regEmail" class="form-label">College Email *</label>
+              <input type="email" id="regEmail" class="form-control" placeholder="student@college.edu" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regDept" class="form-label">Department / Branch *</label>
+              <select id="regDept" class="form-control form-select" required>
+                <option value="">Select Department</option>
+                <option value="Computer Science">Computer Science & Eng.</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Comm.">Electronics & Communication</option>
+                <option value="Mechanical Eng.">Mechanical Engineering</option>
+                <option value="Civil Eng.">Civil Engineering</option>
+                <option value="Design & Media">Design & Multimedia</option>
+                <option value="Management & Tech">Management & Tech</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="regYear" class="form-label">Year of Study *</label>
+              <select id="regYear" class="form-control form-select" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year (Freshman)</option>
+                <option value="2nd Year">2nd Year (Sophomore)</option>
+                <option value="3rd Year">3rd Year (Junior)</option>
+                <option value="4th Year">4th Year (Senior / Final)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regTeach" class="form-label">
+                <i class="fa-solid fa-chalkboard-user" style="color: #4338ca;"></i> Skill You Can Teach *
+              </label>
+              <input type="text" id="regTeach" class="form-control" placeholder="e.g. Python, Figma, Video Editing" required>
+              <div class="form-text-hint">What skill can you offer to help peers?</div>
+            </div>
+
+            <div class="form-group">
+              <label for="regLearn" class="form-label">
+                <i class="fa-solid fa-lightbulb" style="color: #86198f;"></i> Skill You Want to Learn *
+              </label>
+              <input type="text" id="regLearn" class="form-control" placeholder="e.g. DSA, Cloud, Public Speaking" required>
+              <div class="form-text-hint">What are you hoping to learn this term?</div>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regPass" class="form-label">Password *</label>
+              <input type="password" id="regPass" class="form-control" placeholder="Min 8 characters" required>
+            </div>
+
+            <div class="form-group">
+              <label for="regConfirmPass" class="form-label">Confirm Password *</label>
+              <input type="password" id="regConfirmPass" class="form-control" placeholder="Re-type password" required>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+            <input type="checkbox" id="termsCheck" required style="margin-top: 0.25rem;">
+            <label for="termsCheck">
+              I agree to the SkillSwap College Community Guidelines and will respect peer learning sessions.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem;">
+            <i class="fa-solid fa-user-plus"></i> Complete Registration
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an account? <a href="login.html">Sign in here</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div><a href="index.html" style="color: #a5b4fc;">Back to Home</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    async function handleRegistrationSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const dept = document.getElementById('regDept').value;
+      const year = document.getElementById('regYear').value;
+      const teach = document.getElementById('regTeach').value.trim();
+      const learn = document.getElementById('regLearn').value.trim();
+      const pass = document.getElementById('regPass').value;
+      const confirmPass = document.getElementById('regConfirmPass').value;
+
+      if (pass !== confirmPass) {
+        showToast('Password Mismatch', 'Passwords do not match. Please check and re-type.', 'warning');
+        return;
+      }
+
+      const res = await SkillSwapAPI.register({
+        email: email,
+        password: pass,
+        name: name,
+        department: dept,
+        year: year,
+        teach_skill: teach,
+        learn_skill: learn
+      });
+
+      if (res.ok && res.data.success) {
+        SkillSwapAPI.setToken(res.data.token);
+        SkillSwapAPI.setCurrentUser(res.data.user);
+        showToast(
+          'Account Created & Saved to SQLite!',
+          `Welcome to SkillSwap, ${name}! Redirecting to student dashboard...`,
+          'success'
+        );
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1000);
+      } else {
+        const errMsg = res.data && res.data.error ? res.data.error : 'Registration failed.';
+        showToast('Registration Error', errMsg, 'error');
+      }
+    }
+  </script>
+</body>
+</html>

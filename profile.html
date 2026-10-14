@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Student Profile – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="explore.html" class="nav-link">Explore Students</a>
+        <a href="connections.html" class="nav-link">My Connections</a>
+        <a href="profile.html" class="nav-link active">My Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="user-nav-dropdown" title="Profile">
+          <div class="nav-avatar-mini" id="profileNavAvatar">AM</div>
+          <span class="nav-user-name">Alex Morgan</span>
+        </a>
+        <a href="index.html" class="btn btn-outline btn-sm" title="Log out to Home">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="profile-grid-layout">
+        
+        <!-- Left Column: Student Bio Card -->
+        <div>
+          <div class="profile-card-sticky">
+            <div class="profile-avatar-xl" id="profileAvatarDisplay">AM</div>
+            <h2 class="profile-name" id="profileNameDisplay">Alex Morgan</h2>
+            <div class="profile-branch" id="profileMetaDisplay">
+              Computer Science & Eng. • 3rd Year
+            </div>
+
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;" id="profileBioDisplay">
+              Passionate about full-stack web development and Python scripting. Looking forward to learning UI/UX design and cloud deployment from peers!
+            </p>
+
+            <div class="profile-stats-box">
+              <div>
+                <div class="p-stat-val">12</div>
+                <div class="p-stat-lbl">Swaps Done</div>
+              </div>
+              <div>
+                <div class="p-stat-val">4.9 ★</div>
+                <div class="p-stat-lbl">Peer Rating</div>
+              </div>
+              <div>
+                <div class="p-stat-val">CS23B1042</div>
+                <div class="p-stat-lbl">Student ID</div>
+              </div>
+            </div>
+
+            <div style="text-align: left; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              <div style="margin-bottom: 0.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--primary-purple); width: 20px;"></i> Campus: Main Campus Library</div>
+              <div style="margin-bottom: 0.5rem;"><i class="fa-regular fa-clock" style="color: var(--primary-purple); width: 20px;"></i> Availability: Weekdays after 4 PM</div>
+              <div><i class="fa-solid fa-envelope" style="color: var(--primary-purple); width: 20px;"></i> alex.morgan@college.edu</div>
+            </div>
+
+            <button type="button" class="btn btn-outline btn-sm" id="resetProfileDemoBtn" style="width: 100%;">
+              <i class="fa-solid fa-arrow-rotate-left"></i> Reset Demo Profile Data
+            </button>
+          </div>
+
+          <!-- Peer Reviews Card -->
+          <div class="card" style="margin-top: 1.5rem; padding: 1.5rem;">
+            <h4 style="font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-star" style="color: #f59e0b;"></i> Verified Peer Reviews
+            </h4>
+            
+            <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 0.85rem; margin-bottom: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                <span>Sneha Patel (IT)</span>
+                <span style="color: #f59e0b;">5.0 ★</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                "Alex taught me Python data structures with such clarity! Very patient and practical."
+              </p>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700;">
+                <span>Ananya Iyer (CSE)</span>
+                <span style="color: #f59e0b;">4.9 ★</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                "Helped me resolve all Git merge conflicts and taught proper branching etiquette."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Skill Forms & Details -->
+        <div>
+          <!-- Box 1: Skills I Can Teach Form -->
+          <div class="skill-box-card">
+            <div class="skill-box-header">
+              <div>
+                <h3 class="skill-box-title" style="color: #3730a3;">
+                  <i class="fa-solid fa-chalkboard-user"></i> Skills I Can Teach (Offers)
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                  These are the skills you can share with fellow students in 1-on-1 sessions.
+                </p>
+              </div>
+              <span class="badge badge-teach" id="teachCountBadge">4 skills listed</span>
+            </div>
+
+            <!-- Live Interactive Badges Container -->
+            <div class="interactive-tag-list" id="teachSkillsContainer">
+              <!-- Rendered dynamically by js/profile.js -->
+            </div>
+
+            <!-- Form: Add Teaching Skill -->
+            <form id="addTeachSkillForm" class="add-skill-form-row">
+              <div>
+                <input type="text" id="teachSkillName" class="form-control" placeholder="Add skill name (e.g. Flutter, C++, UI Design)" required>
+              </div>
+              <div>
+                <select id="teachSkillLevel" class="form-control form-select">
+                  <option value="Advanced">Advanced (Can teach in-depth)</option>
+                  <option value="Intermediate" selected>Intermediate (Good working knowledge)</option>
+                  <option value="Beginner">Beginner (Foundational)</option>
+                </select>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="background: #4338ca; border-color: #4338ca;">
+                  <i class="fa-solid fa-plus"></i> Add Skill
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Box 2: Skills I Want to Learn Form -->
+          <div class="skill-box-card">
+            <div class="skill-box-header">
+              <div>
+                <h3 class="skill-box-title" style="color: #86198f;">
+                  <i class="fa-solid fa-lightbulb"></i> Skills I Want to Learn (Requests)
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                  Specify what you want to learn so other students can propose swaps with you.
+                </p>
+              </div>
+              <span class="badge badge-learn" id="learnCountBadge">3 skills requested</span>
+            </div>
+
+            <!-- Live Interactive Badges Container -->
+            <div class="interactive-tag-list" id="learnSkillsContainer">
+              <!-- Rendered dynamically by js/profile.js -->
+            </div>
+
+            <!-- Form: Add Learning Skill -->
+            <form id="addLearnSkillForm" class="add-skill-form-row">
+              <div>
+                <input type="text" id="learnSkillName" class="form-control" placeholder="Add skill to learn (e.g. Cloud, Docker, DSA)" required>
+              </div>
+              <div>
+                <input type="text" id="learnSkillGoal" class="form-control" placeholder="Goal (e.g. Project prep, Interview, Exam)">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="background: #9333ea; border-color: #9333ea;">
+                  <i class="fa-solid fa-plus"></i> Add Goal
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Box 3: Edit Personal & Academic Details -->
+          <div class="skill-box-card" style="margin-bottom: 0;">
+            <div class="skill-box-header">
+              <h3 class="skill-box-title">
+                <i class="fa-solid fa-user-pen" style="color: var(--primary-purple);"></i>
+                Edit Academic & Bio Information
+              </h3>
+            </div>
+
+            <form id="editProfileDetailsForm">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="editFullName" class="form-label">Full Name</label>
+                  <input type="text" id="editFullName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="editDepartment" class="form-label">Department / Branch</label>
+                  <input type="text" id="editDepartment" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="editYear" class="form-label">Year of Study</label>
+                  <input type="text" id="editYear" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="editMode" class="form-label">Preferred Study Mode</label>
+                  <select id="editMode" class="form-control form-select">
+                    <option value="Hybrid (Library & Online)" selected>Hybrid (Library & Online)</option>
+                    <option value="Online Only (Google Meet/Discord)">Online Only (Google Meet/Discord)</option>
+                    <option value="In-Person Only (College Campus)">In-Person Only (College Campus)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="editBio" class="form-label">About Me / Bio</label>
+                <textarea id="editBio" class="form-control" rows="3"></textarea>
+                <div class="form-text-hint">Describe your learning interests, coding experience, and peer mentorship style.</div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Profile Details
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="dashboard.html" style="color: #a5b4fc;">Dashboard</a>
+          <a href="explore.html" style="color: #a5b4fc;">Explore Directory</a>
+          <a href="connections.html" style="color: #a5b4fc;">My Connections</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

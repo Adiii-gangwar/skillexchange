@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Student Directory – SkillSwap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- College PBL Project Banner -->
+  <div class="pbl-banner">
+    <i class="fa-solid fa-graduation-cap"></i> 
+    <strong>College PBL Presentation:</strong> SkillSwap – Peer-to-Peer Campus Skill Exchange Platform
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div class="brand-name">Skill<span>Swap</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="explore.html" class="nav-link active">Explore Students</a>
+        <a href="connections.html" class="nav-link">My Connections</a>
+        <a href="profile.html" class="nav-link">My Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="user-nav-dropdown" title="Profile">
+          <div class="nav-avatar-mini">AM</div>
+          <span class="nav-user-name">Alex Morgan</span>
+        </a>
+        <a href="index.html" class="btn btn-outline btn-sm" title="Log out to Home">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-bottom: 4rem;">
+    <!-- Search & Filter Header Section -->
+    <section class="explore-header">
+      <div class="container">
+        <div style="text-align: center; max-width: 650px; margin: 0 auto 2rem auto;">
+          <span class="section-subtitle">Student Directory</span>
+          <h1 style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 0.5rem;">
+            Explore Campus Skill Partners
+          </h1>
+          <p style="color: var(--text-secondary); font-size: 1.05rem;">
+            Search peers by the skills they can teach or skills they want to learn. Send a swap request to collaborate!
+          </p>
+        </div>
+
+        <!-- Main Search Bar -->
+        <div class="search-bar-wrapper" style="max-width: 780px; margin: 0 auto 1.5rem auto;">
+          <i class="fa-solid fa-magnifying-glass" style="font-size: 1.2rem; color: var(--primary-purple); margin-left: 0.75rem;"></i>
+          <input type="text" id="studentSearchInput" class="search-input-field" placeholder="Search by name, skill (e.g. Python, Figma, DSA, Docker), or branch...">
+          <button class="btn btn-primary btn-sm" onclick="filterAndRenderStudents()">
+            Search
+          </button>
+        </div>
+
+        <!-- Skill Category Filter Chips -->
+        <div class="category-chips" id="categoryChipsContainer">
+          <!-- Rendered dynamically by js/explore.js -->
+        </div>
+
+        <!-- Secondary Filters Row -->
+        <div class="filter-bar-controls">
+          <div class="filter-selects-group">
+            <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">
+              <i class="fa-solid fa-filter"></i> Filters:
+            </label>
+            
+            <select id="deptFilter" class="filter-dropdown">
+              <option value="all">All Departments</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Information Tech">Information Technology</option>
+              <option value="Electronics">Electronics & Comm.</option>
+              <option value="Mechanical">Mechanical Eng.</option>
+              <option value="Management">Management & Tech</option>
+            </select>
+
+            <select id="yearFilter" class="filter-dropdown">
+              <option value="all">All Years</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+
+            <button type="button" id="resetFiltersBtn" class="btn btn-secondary btn-sm" style="font-size: 0.8rem; padding: 0.45rem 0.8rem;">
+              <i class="fa-solid fa-rotate-left"></i> Reset
+            </button>
+          </div>
+
+          <div id="resultsCountBadge" class="results-count-badge">
+            Showing 8 students
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Cards Grid -->
+    <div class="container">
+      <div class="students-grid" id="studentsGrid">
+        <!-- Rendered dynamically by js/explore.js from MOCK_STUDENTS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Swap Request Modal Component -->
+  <div class="modal-overlay" id="swapRequestModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-handshake" style="color: var(--primary-purple);"></i>
+          Propose Skill Swap
+        </h3>
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="swapRequestForm">
+        <div class="modal-body">
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            You are requesting a 1-on-1 skill exchange session with <strong id="modalStudentName" style="color: var(--text-primary);">Student</strong>.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="modalMySkillOffer">
+              Which skill do you offer to teach in return? *
+            </label>
+            <select id="modalMySkillOffer" class="form-control form-select" required>
+              <!-- Populated dynamically with current user's skills -->
+            </select>
+            <div class="form-text-hint">Select one of your teaching strengths to offer to this peer.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modalSwapMessage">
+              Introduction & Topic Message *
+            </label>
+            <textarea id="modalSwapMessage" class="form-control" rows="3" required placeholder="Hi! I'd love to learn this skill and can help you with practical exercises in return. When are you free this week?"></textarea>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.8rem; color: var(--text-secondary);">
+            <i class="fa-solid fa-shield-halved" style="color: var(--primary-blue);"></i> 
+            <strong>PBL Demo:</strong> No email or SMS spam. Swap request will immediately appear in your sent connections list.
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-paper-plane"></i> Send Swap Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>© 2026 SkillSwap – College PBL Project Frontend Prototype.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="dashboard.html" style="color: #a5b4fc;">Dashboard</a>
+          <a href="connections.html" style="color: #a5b4fc;">My Connections</a>
+          <a href="profile.html" style="color: #a5b4fc;">My Profile</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/explore.js"></script>
+  <script>
+    // Handle URL search query e.g. explore.html?q=Python from Dashboard
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      if (query) {
+        const input = document.getElementById('studentSearchInput');
+        if (input) {
+          input.value = query;
+          currentSearchQuery = query.toLowerCase();
+          filterAndRenderStudents();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
